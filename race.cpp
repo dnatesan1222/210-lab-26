@@ -100,8 +100,8 @@ int main() {
     deleting[1] = duration.count();
 
     start = high_resolution_clock::now();
-    it = st.begin();
-    advance(it, st.size() / 2);
+    auto itS = st.begin();
+    advance(itS, st.size() / 2);
     end = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end - start);
     deleting[2] = duration.count();
@@ -112,11 +112,26 @@ int main() {
 }
 
 void display(int r[], int s[], int i[], int d[]){
-    cout << "\tOperation\tVector\tList\tSet" << endl;
-    cout << "\tRead\t\t" << r[0] << '\t' << r[1] << '\t' << r[2] << endl;
-    cout << "\tSort\t\t" << s[0] << '\t' << s[1] << '\t' << s[2] << endl;
-    cout << "\tInsert\t\t" << i[0] << '\t' << i[1] << '\t' << i[2] << endl;
-    cout << "\tDelete\t\t" << d[0] << '\t' << d[1] << '\t' << d[2] << endl;
+    cout << right << setw(15) << "Operation"
+         << right << setw(10) << "Vector"
+         << setw(10) << "List"
+         << setw(10) << "Set" << endl;
+    cout << right << setw(15) << "Read"
+         << right << setw(10) << r[0]
+         << setw(10) << r[1]
+         << setw(10) << r[2] << endl;
+    cout << right << setw(15) << "Sort"
+         << right << setw(10) << s[0]
+         << setw(10) << s[1]
+         << setw(10) << s[2] << endl;
+    cout << right << setw(15) << "Insert"
+         << right << setw(10) << i[0]
+         << setw(10) << i[1]
+         << setw(10) << i[2] << endl;
+    cout << right << setw(15) << "Delete"
+         << right << setw(10) << d[0]
+         << setw(10) << d[1]
+         << setw(10) << d[2] << endl;
 }
 /* syntax examples:
 auto start = high_resolution_clock::now()
