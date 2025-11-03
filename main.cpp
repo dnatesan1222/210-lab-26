@@ -18,10 +18,24 @@ void display(int [], int [], int [], int []);
 
 int main() {
     int results[25][4][3];
-    for (int i = 0; i < 25; i++){
-        results[i] = reading();
-        
-
+    results[i][0] = reading();
+    results[i][1] = sorting();
+    results[i][2] = inserting();
+    results[i][3] = deleting();
+    for (int i = 1; i < 25; i++){
+        results[i][0] = reading();
+	for (int j = 0; j < 3; j++)
+	    results[i][0][j] += results[i][0][j];
+        results[i][1] = sorting();
+	for (int j = 0; j < 3; j++)
+	    results[i][1][j] += results[i][1][j];
+	results[i][2] = inserting();
+	for (int j = 0; j < 3; j++)
+	    results[i][2][j] += results[i][2][j];
+	results[i][3] = deleting();
+	for (int j = 0; j < 3; j++)
+	    results[i][3][j] += results[i][3][j];
+    }
 
 
     int reading[3];
@@ -151,6 +165,22 @@ int[] reading(){
     r[2] = duration.count();
     
     return r;
+}
+
+int[] sorting(){
+    start = high_resolution_clock::now();
+    sort(vect.begin(), vect.end());
+    end = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(end - start);
+    sorting[0] = duration.count();
+
+    start = high_resolution_clock::now();
+    lst.sort();
+    end = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(end - start);
+    s[1] = duration.count();
+
+    s[2] = -1;
 }
 
 void display(int r[], int s[], int i[], int d[]){
