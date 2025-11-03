@@ -13,9 +13,11 @@ using namespace std;
 using namespace std::chrono;
 
 //display() neatly outputs the results of the races
-//arguments: (4) int[] containing the result data
+//arguments: int[4][3] containing the averaged result data
 void display(int [4][3]);
 
+//display() calls the other display() to neatly output the results of the races when they're in a 3D array
+//arguments: int[][][] containing the all result data
 void display(int [15][4][3]);
 
 int main() {
@@ -111,6 +113,7 @@ int main() {
 		duration = duration_cast<milliseconds>(end - start);
 		results[i][3][2] = duration.count();
 		
+		//accumulates the variables as we go through each run
 		if (i != 0){
 			results[i][0][0] += results[i-1][0][0];
                         results[i][0][1] += results[i-1][0][1];
@@ -138,7 +141,7 @@ void display(int r[15][4][3]){
 	int avg[4][3];
 	for (int i = 0; i < 4; i++)
 		for (int j = 0; j < 3; j++)
-			avg[i][j] = (r[14][i][j])/15;
+			avg[i][j] = (r[14][i][j])/15;	//divide by 10 to get averages
 	display(avg);
 }
 
@@ -146,7 +149,7 @@ void display(int r[4][3]){
 	cout << right << setw(15) << "Operation"
 		<< right << setw(10) << "Vector"
 		<< setw(10) << "List"
-		<< setw(10) << "Set" << endl;
+		<< setw(10) << "Set" << endl;	//use setw to polish the output like the sample output
 	cout << right << setw(15) << "Read"
 		<< right << setw(10) << r[0][0]
 		<< setw(10) << r[0][1]
