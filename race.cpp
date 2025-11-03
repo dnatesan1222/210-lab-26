@@ -118,7 +118,6 @@ void display(int r[], int s[], int i[], int d[]){
     cout << "\tInsert\t\t" << i[0] << '\t' << i[1] << '\t' << i[2] << endl;
     cout << "\tDelete\t\t" << d[0] << '\t' << d[1] << '\t' << d[2] << endl;
 }
-
 /* syntax examples:
 auto start = high_resolution_clock::now()
 auto end = high_resolution_clock::now()
