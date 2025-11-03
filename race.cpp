@@ -23,7 +23,7 @@ int main() {
 
 	//each time the loop runs, the next 2D array (of the 15) gets updated
 	for (int i = 0; i < 15; i++){
-		//inserting - the first
+		//reading - the first operation, part of the 4 operations to be tested so all reading times are stored in result[i][0]
 		auto start = high_resolution_clock::now();
 		ifstream fin("codes.txt");
 		string line;
@@ -32,7 +32,7 @@ int main() {
 			vect.push_back(line);
 		auto end = high_resolution_clock::now();
 		auto duration = duration_cast<milliseconds>(end - start);
-		results[i][0][0] = duration.count();
+		results[i][0][0] = duration.count();	//stores the time in the first row and column of reading's 2D array
 
 		start = high_resolution_clock::now();
 		ifstream fin1("codes.txt");
@@ -51,8 +51,8 @@ int main() {
 		end = high_resolution_clock::now();
 		duration = duration_cast<milliseconds>(end - start);
 		results[i][0][2] = duration.count();
-
-		//sorting
+	
+		//sorting - the second operation, part of the 4 operations to be tested so all sorting times are stored in result[i][1]
 		start = high_resolution_clock::now();
 		sort(vect.begin(), vect.end());
 		end = high_resolution_clock::now();
@@ -67,7 +67,7 @@ int main() {
 
 		results[i][1][2] = -1;
 
-		//inserting
+		//inserting - the third operation, part of the 4 operations to be tested so all inserting times are stored in result[i][2]
 		start = high_resolution_clock::now();
 		vect.insert(vect.begin() + (vect.size() / 2), "TESTCODE");
 		end = high_resolution_clock::now();
@@ -88,7 +88,7 @@ int main() {
 		duration = duration_cast<milliseconds>(end - start);
 		results[i][2][2] = duration.count();
 
-		//deleting
+		//deleting - the last operation, part of the 4 operations to be tested so all deleting times are stored in result[i][2]
 		start = high_resolution_clock::now();
 		vect.erase(vect.begin() + vect.size() / 2);;
 		end = high_resolution_clock::now();
@@ -134,7 +134,7 @@ int main() {
 	return 0;
 }
 
-void display(int r[][][]){
+void display(int r[15][4][3]){
 	int avg[4][3];
 	for (int i = 0; i < 4; i++)
 		for (int j = 0; j < 3; j++)
@@ -142,7 +142,7 @@ void display(int r[][][]){
 	display(avg);
 }
 
-void display(int r[][]){
+void display(int r[4][3]){
 	cout << right << setw(15) << "Operation"
 		<< right << setw(10) << "Vector"
 		<< setw(10) << "List"
