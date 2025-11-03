@@ -95,7 +95,6 @@ int main() {
     start = high_resolution_clock::now();
     it = lst.begin();
     advance(it, lst.size() / 2);
-    lst.erase(it);
     end = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end - start);
     deleting[1] = duration.count();
@@ -103,7 +102,6 @@ int main() {
     start = high_resolution_clock::now();
     it = st.begin();
     advance(it, st.size() / 2);
-    st.erase(it);
     end = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end - start);
     deleting[2] = duration.count();
