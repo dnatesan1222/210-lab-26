@@ -32,7 +32,7 @@ int main() {
 			vect.push_back(line);
 		auto end = high_resolution_clock::now();
 		auto duration = duration_cast<milliseconds>(end - start);
-		results[i][0][0] = duration.count();	//stores the time in the first row and column of reading's 2D array
+		results[i][0][0] = duration.count();	//stores the time in the first row and column of every 2D array
 
 		start = high_resolution_clock::now();
 		ifstream fin1("codes.txt");
@@ -41,7 +41,7 @@ int main() {
 			lst.push_back(line);
 		end = high_resolution_clock::now();
 		duration = duration_cast<milliseconds>(end - start);
-		results[i][0][1] = duration.count();
+		results[i][0][1] = duration.count();	//stores the time in the first row and second column of every 2D array
 
 		start = high_resolution_clock::now();
 		ifstream fin2("codes.txt");
@@ -57,7 +57,7 @@ int main() {
 		sort(vect.begin(), vect.end());
 		end = high_resolution_clock::now();
 		duration = duration_cast<milliseconds>(end - start);
-		results[i][1][0] = duration.count();
+		results[i][1][0] = duration.count();	////stores the time in the second row and first column of every 2D array
 
 		start = high_resolution_clock::now();
 		lst.sort();
@@ -72,7 +72,7 @@ int main() {
 		vect.insert(vect.begin() + (vect.size() / 2), "TESTCODE");
 		end = high_resolution_clock::now();
 		duration = duration_cast<milliseconds>(end - start);
-		results[i][2][0] = duration.count();
+		results[i][2][0] = duration.count();	////stores the time in the third row and first column of every 2D array
 
 		start = high_resolution_clock::now();
 		auto it = lst.begin();
@@ -93,7 +93,7 @@ int main() {
 		vect.erase(vect.begin() + vect.size() / 2);;
 		end = high_resolution_clock::now();
 		duration = duration_cast<milliseconds>(end - start);
-		results[i][3][0] = duration.count();
+		results[i][3][0] = duration.count();	////stores the time in the last row and first column of every 2D array
 
 		start = high_resolution_clock::now();
 		it = lst.begin();
