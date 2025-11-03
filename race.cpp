@@ -14,15 +14,16 @@ using namespace std::chrono;
 
 //display() neatly outputs the results of the races
 //arguments: (4) int[] containing the result data
-void display(int [][]);
+void display(int [4][3]);
 
-void display(int [][][]);
+void display(int [15][4][3]);
 
 int main() {
 	int results[15][4][3];
 
+	//each time the loop runs, the next 2D array (of the 15) gets updated
 	for (int i = 0; i < 15; i++){
-		//inserting
+		//inserting - the first
 		auto start = high_resolution_clock::now();
 		ifstream fin("codes.txt");
 		string line;
@@ -97,6 +98,7 @@ int main() {
 		start = high_resolution_clock::now();
 		it = lst.begin();
 		advance(it, lst.size() / 2);
+		lst.erase(it);
 		end = high_resolution_clock::now();
 		duration = duration_cast<milliseconds>(end - start);
 		results[i][3][1] = duration.count();
@@ -104,6 +106,7 @@ int main() {
 		start = high_resolution_clock::now();
 		auto itS = st.begin();
 		advance(itS, st.size() / 2);
+		st.erase(itS);
 		end = high_resolution_clock::now();
 		duration = duration_cast<milliseconds>(end - start);
 		results[i][3][2] = duration.count();
@@ -131,12 +134,15 @@ int main() {
 	return 0;
 }
 
-void display(int r[15][4][3]){
-	for (int i = 0; i < 15; i++)
-		display(r[i]);
+void display(int r[][][]){
+	int avg[4][3];
+	for (int i = 0; i < 4; i++)
+		for (int j = 0; j < 3; j++)
+			avg[i][j] = (r[14][i][j])/15;
+	display(avg);
 }
 
-void display(int r[4][3]){
+void display(int r[][]){
 	cout << right << setw(15) << "Operation"
 		<< right << setw(10) << "Vector"
 		<< setw(10) << "List"
