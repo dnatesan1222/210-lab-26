@@ -65,7 +65,7 @@ int main() {
     int insert[3];
    
     start = high_resolution_clock::now();
-    vect.insert(vect.begin() + vect.size() / 2, "TESTCODE");
+    vect.insert(vect.begin() + (vect.size() / 2), "TESTCODE");
     end = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end - start);
     insert[0] = duration.count();
@@ -87,19 +87,23 @@ int main() {
     int deleting[3];
     
     start = high_resolution_clock::now();
-    vect.clear();
+    vect.erase(vect.begin() + vect.size() / 2);;
     end = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end - start);
     deleting[0] = duration.count();
 
     start = high_resolution_clock::now();
-    lst.clear();
+    it = lst.begin();
+    advance(it, lst.size() / 2);
+    lst.erase(it);
     end = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end - start);
     deleting[1] = duration.count();
 
     start = high_resolution_clock::now();
-    st.clear();
+    it = st.begin();
+    advance(it, st.size() / 2);
+    st.erase(it);
     end = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end - start);
     deleting[2] = duration.count();
