@@ -17,6 +17,13 @@ using namespace std::chrono;
 void display(int [], int [], int [], int []);
 
 int main() {
+    int results[25][4][3];
+    for (int i = 0; i < 25; i++){
+        results[i] = reading();
+        
+
+
+
     int reading[3];
     auto start = high_resolution_clock::now();
     ifstream fin("codes.txt");
@@ -121,9 +128,29 @@ int[] reading(){
         vect.push_back(line);
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(end - start);
-    reading[0] = duration.count();
+    r[0] = duration.count();
 
-    //
+    //list
+    start = high_resolution_clock::now();
+    ifstream fin1("codes.txt");
+    list<string> lst;
+    while(getline(fin1, line))
+        lst.push_back(line);
+    end = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(end - start);
+    r[1] = duration.count();
+
+    //set
+    start = high_resolution_clock::now();
+    ifstream fin2("codes.txt");
+    set<string> st;
+    while(getline(fin2, line))
+        st.insert(line);
+    end = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(end - start);
+    r[2] = duration.count();
+    
+    return r;
 }
 
 void display(int r[], int s[], int i[], int d[]){
